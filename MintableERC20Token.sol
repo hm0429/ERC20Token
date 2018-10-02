@@ -9,7 +9,7 @@ contract MintableERC20Token {
   uint8 public constant rate = 100; // 1 Ether = 100 トークン
 
   // このコントラクトから Ether を引き出すことのできるアドレス
-  uint8 public constant contractOwner = 0xee8779531B0693d518D707dfB41675c056fE8c70;
+  address public constant contractOwner = 0xee8779531B0693d518D707dfB41675c056fE8c70;
 
   /***************************************************************************
   * Private Variables
