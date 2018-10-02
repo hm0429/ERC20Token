@@ -135,12 +135,6 @@ contract DelegatableERC20Token {
     // 転送先が 0x0 でないことチェック
     require(to != address(0));
 
-    // nonce インクリメントのオーバーフロー対策
-    require(_nonces[msg.sender] + 1 >= _nonces[msg.sender]);
-
-    // nonce をインクリメント
-    _nonces[msg.sender] = _nonces[msg.sender] + 1;
-
     // メソッド実行者（転送元）の残高から転送トークン数を差し引く
     // require(value <= _balances[msg.sender]); により、
     // value が _balances[msg.sender] 以下であることが保証済
