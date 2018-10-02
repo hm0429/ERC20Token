@@ -8,6 +8,9 @@ contract MintableERC20Token {
   // Ether と トークンの交換レート
   uint8 public constant rate = 100; // 1 Ether = 100 トークン
 
+  // このコントラクトから Ether を引き出すことのできるアドレス
+  uint8 public constant contractOwner = 0xee8779531B0693d518D707dfB41675c056fE8c70;
+
   /***************************************************************************
   * Private Variables
   ***************************************************************************/
@@ -241,6 +244,13 @@ contract MintableERC20Token {
     // オーバーフロー対策    
     require(amount / msg.value == rate);
     _mint(msg.sender, amount);
-  } 
+  }
+
+  function withdraw(uint256 amount)
+    public
+  {
+    require (msg.sender == contractOwner);
+    msg.sender.transfer(amount);
+  }
 
 }
